@@ -1,0 +1,206 @@
+{
+  "dialogs": [
+    {
+      "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+      "text": "Этому городу нужен новый геройc",
+      "created_at": "Wed Jan 01 2003 07:33:08 GMT+0000 (UTC)",
+      "user": {
+        "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+        "fullname": "Бэтменс",
+        "isOnline": false,
+        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQoPfDG_OD4xWjfl_zYHzurRSVxNVkt64CM8g&usqp=CAU"
+      }
+    },
+
+    {
+      "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+      "text": "Человек паук, как без рук",
+      "created_at": "Sun Jan 22 2006 09:33:52 GMT+0000 (UTC)",
+      "user": {
+        "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+        "fullname": "Человек-паук",
+        "isOnline": true,
+        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRw60JJhV4vfi3F0Tl2GMBdU8QDrxL4wdNgXA&usqp=CAU"
+      }
+    },
+
+    {
+      "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+      "text": "Da-Ba-Boom",
+      "created_at": "Sat Oct 08 1977 04:44:57 GMT+0000 (UTC)",
+      "user": {
+        "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+        "fullname": "Инкогнито",
+        "isOnline": true,
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4d1449ed1adabb72270071",
+      "text": "Nisi ipsum laboris commodo amet consectetur cillum. Tempor cupidatat quis consequat quis. Occaecat occaecat exercitation amet eiusmod consectetur eiusmod.",
+      "created_at": "Wed Jan 01 2003 07:33:08 GMT+0000 (UTC)",
+      "user": {
+        "_id": "5f4d14496ca11a4102665394",
+        "fullname": "Larson Hamilton",
+        "isOnline": true,
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4d1449019b92ec207105ee",
+      "text": "Pariatur exercitation ex sint sunt velit anim voluptate. Non reprehenderit consequat veniam ullamco. Consectetur aute sint dolor pariatur culpa cillum consectetur elit.",
+      "created_at": "Sat Jul 05 2014 21:27:21 GMT+0000 (UTC)",
+      "user": {
+        "_id": "5f4d1449ddac8297dcc0622a",
+        "fullname": "Queen Gill",
+        "isOnline": true,
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4d14492b0eef376ce240e2",
+      "text": "Cupidatat ullamco consectetur irure et et nostrud incididunt fugiat cupidatat esse officia tempor culpa. Lorem consequat aliquip veniam non est. Elit irure sit officia cillum.",
+      "created_at": "Fri Jun 29 1979 05:31:25 GMT+0000 (UTC)",
+      "user": {
+        "_id": "5f4d14491ba839f9525323ef",
+        "fullname": "Nikki Jensen",
+        "isOnline": true,
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4d14496d5635ed6964a0cf",
+      "text": "Eiusmod quis nulla pariatur eu nisi. Nulla sint non aliquip do sint sit ipsum nulla occaecat reprehenderit velit esse adipisicing aliqua. Amet amet aliqua veniam sint consequat mollit labore deserunt exercitation incididunt irure.",
+      "created_at": "Fri Dec 16 1983 16:33:41 GMT+0000 (UTC)",
+      "user": {
+        "_id": "5f4d14490c0c8268abc18531",
+        "fullname": "Jeanine Mclean",
+        "isOnline": true,
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4d144978f8d78d67266de4",
+      "text": "Est fugiat culpa officia in ipsum et occaecat consectetur voluptate nisi veniam velit. Elit labore Lorem incididunt fugiat sint laboris dolore cupidatat. Ullamco non irure excepteur ut dolore dolore ullamco.",
+      "created_at": "Sat Oct 08 1977 04:44:57 GMT+0000 (UTC)",
+      "user": {
+        "_id": "5f4d1449b4edcd46877ee28f",
+        "fullname": "Davis Molina",
+        "isOnline": true,
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4d14494b829a8c2001a025",
+      "text": "Sit quis velit ullamco id amet elit amet. Et adipisicing duis voluptate sint labore sunt dolor laboris ullamco voluptate. Consequat reprehenderit minim laboris in sint do commodo officia ad fugiat non laborum.",
+      "created_at": "Sun Jan 22 2006 09:33:52 GMT+0000 (UTC)",
+      "user": {
+        "_id": "5f4d1449353f5c76840c2c8b",
+        "fullname": "Ursula Ashley",
+        "isOnline": true,
+        "avatar": null
+      }
+    }
+  ],
+  "messages": [
+    {
+      "_id": "5f4e41afde4dbd95e32fbb36",
+      "avatar": null,
+      "text": "Fugiat pariatur incididunt ex mollit eiusmod adipisicing est irure nostrud ad non laboris cillum exercitation.",
+      "date": "Sun Jun 29 2014 00:51:38 GMT+0000 (UTC)",
+      "user": {
+        "_id": "25f4e41afb3e5c591955922cc",
+        "fullname": "Bridget Myers",
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4e41af162de15b22e9e978",
+      "avatar": null,
+      "text": "Pariatur proident anim eu incididunt aute incididunt et occaecat esse Lorem ex irure.",
+      "date": "Tue Mar 30 1976 04:09:20 GMT+0000 (UTC)",
+      "user": {
+        "_id": "35f4e41affed46998938413c2",
+        "fullname": "Higgins Willis",
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4e41af85d523793591f8d1",
+      "avatar": null,
+      "text": "Ut sunt nisi veniam est.",
+      "date": "Sun Jan 26 1986 03:12:40 GMT+0000 (UTC)",
+      "user": {
+        "_id": "45f4e41afe7367805d2524eb0",
+        "fullname": "Sonia Sharpe",
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4e41af57c0eaac4f94ed66",
+      "avatar": null,
+      "text": "Deserunt veniam sunt nisi incididunt velit quis culpa excepteur cillum consectetur ad do.",
+      "date": "Tue Dec 13 1977 20:17:18 GMT+0000 (UTC)",
+      "user": {
+        "_id": "45f4e41afd2c12c352651343a",
+        "fullname": "Miller Slater",
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4e41af0d5bbd2e8282d26e",
+      "avatar": null,
+      "text": "Officia minim qui aliqua elit dolor sit.",
+      "date": "Mon Jul 06 2009 10:32:36 GMT+0000 (UTC)",
+      "user": {
+        "_id": "15f4e41afc4fafce293df1073",
+        "fullname": "Sheri Kennedy",
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4e41af299f1f4d101064d7",
+      "avatar": null,
+      "text": "In ex non adipisicing aute culpa id sunt.",
+      "date": "Sat Jul 20 1974 20:06:55 GMT+0000 (UTC)",
+      "user": {
+        "_id": "35f4e41af25ff05e65f3322f2",
+        "fullname": "Guthrie Odom",
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4e41afa8aace7854c8008c",
+      "avatar": null,
+      "text": "Nisi culpa et fugiat ad esse nisi.",
+      "date": "Thu Jun 04 2020 19:52:34 GMT+0000 (UTC)",
+      "user": {
+        "_id": "35f4e41afd8684adb1ee1802b",
+        "fullname": "Alana Barry",
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4e41afd8f8af65a540bb6d",
+      "avatar": null,
+      "text": "Occaecat ea ea aliqua quis aliquip duis ut proident est sint eiusmod nostrud et.",
+      "date": "Mon Jun 19 2017 14:25:36 GMT+0000 (UTC)",
+      "user": {
+        "_id": "45f4e41afa7f30c868279064e",
+        "fullname": "Lucas Howard",
+        "avatar": null
+      }
+    },
+    {
+      "_id": "5f4e41af249949ae11178d18",
+      "avatar": null,
+      "text": "Adipisicing amet aute cillum esse exercitation aliquip non ullamco officia in aliquip in.",
+      "date": "Thu Feb 16 2006 08:14:41 GMT+0000 (UTC)",
+      "user": {
+        "_id": "45f4e41af27b594b1c42f45f5",
+        "fullname": "Lucinda Little",
+        "avatar": null
+      }
+    }
+  ]
+}
