@@ -6,15 +6,15 @@ export interface IDialog extends Document {
   lastMessage: { type: Schema.Types.ObjectId; ref: string };
 }
 
-const DialogsSchema = new Schema(
+const DialogSchema = new Schema(
   {
+    partner: { type: Schema.Types.ObjectId, ref: 'User' },
     author: { type: Schema.Types.ObjectId, ref: 'User' },
-    owner: { type: Schema.Types.ObjectId, ref: 'User' },
     lastMessage: { type: Schema.Types.ObjectId, ref: 'Message' },
   },
   { timestamps: true }
 );
 
-const UserModel = mongoose.model<IDialog>('User', DialogsSchema);
+const DialogModel = mongoose.model<IDialog>('Dialog', DialogSchema);
 
-export default UserModel;
+export default DialogModel;
