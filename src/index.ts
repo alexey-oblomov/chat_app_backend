@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import express from 'express';
 import bodyParser from 'body-parser';
 
-import { UserModel } from './schemas';
+import { UserModel } from './models';
 import { UserController } from './controllers';
 
 const app = express();
