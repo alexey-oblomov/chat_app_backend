@@ -1,11 +1,11 @@
 {
   "dialogs": [
     {
-      "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+      "_id": "5f1de2205d0f91dc7109bf1c8814c53f6",
       "text": "Этому городу нужен новый геройc",
       "created_at": "Wed Jan 01 2003 07:33:08 GMT+0000 (UTC)",
       "user": {
-        "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+        "_id": "5f1de2205d0f91dc7109bf1c885c53f6",
         "fullname": "Бэтменс",
         "isOnline": false,
         "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQoPfDG_OD4xWjfl_zYHzurRSVxNVkt64CM8g&usqp=CAU"
@@ -13,11 +13,11 @@
     },
 
     {
-      "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+      "_id": "5f1de2205d0f91dc7109bf44c881c53f6",
       "text": "Человек паук, как без рук",
       "created_at": "Sun Jan 22 2006 09:33:52 GMT+0000 (UTC)",
       "user": {
-        "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+        "_id": "5f1de2205d0f91dc7109bffc881c53f6",
         "fullname": "Человек-паук",
         "isOnline": true,
         "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRw60JJhV4vfi3F0Tl2GMBdU8QDrxL4wdNgXA&usqp=CAU"
@@ -25,11 +25,11 @@
     },
 
     {
-      "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+      "_id": "5f1de2205d0f91dc7109jjf1c881c53f6",
       "text": "Da-Ba-Boom",
       "created_at": "Sat Oct 08 1977 04:44:57 GMT+0000 (UTC)",
       "user": {
-        "_id": "5f1de2205d0f91dc7109bf1c881c53f6",
+        "_id": "5f1de2205d0f91dc710mkbf1c881c53f6",
         "fullname": "Инкогнито",
         "isOnline": true,
         "avatar": null
@@ -104,48 +104,52 @@
   ],
   "messages": [
     {
-      "_id": "5f4e41afde4dbd95e32fbb36",
-      "avatar": null,
+      "_id": "5f1de2205d0f91dc7109bf1css1c53f6",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRw60JJhV4vfi3F0Tl2GMBdU8QDrxL4wdNgXA&usqp=CAU",
       "text": "Fugiat pariatur incididunt ex mollit eiusmod adipisicing est irure nostrud ad non laboris cillum exercitation.",
       "date": "Sun Jun 29 2014 00:51:38 GMT+0000 (UTC)",
       "user": {
-        "_id": "25f4e41afb3e5c591955922cc",
+        "_id": "5f1de2205d0f91dc7109bggc881c53f6",
         "fullname": "Bridget Myers",
-        "avatar": null
-      }
+        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRw60JJhV4vfi3F0Tl2GMBdU8QDrxL4wdNgXA&usqp=CAU"
+      },
+      "dialog": "5f1de2205d0f91dc7109bf1c8814c53f6"
     },
     {
-      "_id": "5f4e41af162de15b22e9e978",
-      "avatar": null,
+      "_id": "5f1de2205d0f91dc7109bf1c881c5376",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQoPfDG_OD4xWjfl_zYHzurRSVxNVkt64CM8g&usqp=CAU",
       "text": "Pariatur proident anim eu incididunt aute incididunt et occaecat esse Lorem ex irure.",
       "date": "Tue Mar 30 1976 04:09:20 GMT+0000 (UTC)",
       "user": {
-        "_id": "35f4e41affed46998938413c2",
+        "_id": "5f1de2205d0f91dc7u9bf1c881c53f6",
         "fullname": "Higgins Willis",
-        "avatar": null
-      }
+        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQoPfDG_OD4xWjfl_zYHzurRSVxNVkt64CM8g&usqp=CAU"
+      },
+      "dialog": "5f1de2205d0f91dc7109bf1c8814c53f6"
     },
     {
-      "_id": "5f4e41af85d523793591f8d1",
+      "_id": "5f1de2205d0f91dc7109bf1c881c5396",
       "avatar": null,
       "text": "Ut sunt nisi veniam est.",
       "date": "Sun Jan 26 1986 03:12:40 GMT+0000 (UTC)",
       "user": {
-        "_id": "45f4e41afe7367805d2524eb0",
+        "_id": "5f1de2205d0f91dnm109bf1c881c53f6",
         "fullname": "Sonia Sharpe",
         "avatar": null
-      }
+      },
+      "dialog": "5f1de2205d0f91dc7109bf1c8814c53f6"
     },
     {
-      "_id": "5f4e41af57c0eaac4f94ed66",
+      "_id": "5f1de2205d0f91dc7109bf1qa81c53f6",
       "avatar": null,
       "text": "Deserunt veniam sunt nisi incididunt velit quis culpa excepteur cillum consectetur ad do.",
       "date": "Tue Dec 13 1977 20:17:18 GMT+0000 (UTC)",
       "user": {
-        "_id": "45f4e41afd2c12c352651343a",
+        "_id": "5f1de2205d0f91dc7109bfjp881c53f6",
         "fullname": "Miller Slater",
         "avatar": null
-      }
+      },
+      "dialog": "5f1de2205d0f91dc7109bf1c8814c53f6"
     },
     {
       "_id": "5f4e41af0d5bbd2e8282d26e",
@@ -156,7 +160,8 @@
         "_id": "15f4e41afc4fafce293df1073",
         "fullname": "Sheri Kennedy",
         "avatar": null
-      }
+      },
+      "dialog": "5f1de2205d0f91dc7109bf1c8814c53f6"
     },
     {
       "_id": "5f4e41af299f1f4d101064d7",
@@ -167,7 +172,8 @@
         "_id": "35f4e41af25ff05e65f3322f2",
         "fullname": "Guthrie Odom",
         "avatar": null
-      }
+      },
+      "dialog": "5f1de2205d0f91dc7109bf1c8814c53f6"
     },
     {
       "_id": "5f4e41afa8aace7854c8008c",
@@ -178,7 +184,8 @@
         "_id": "35f4e41afd8684adb1ee1802b",
         "fullname": "Alana Barry",
         "avatar": null
-      }
+      },
+      "dialog": "5f1de2205d0f91dc7109bf44c881c53f6"
     },
     {
       "_id": "5f4e41afd8f8af65a540bb6d",
@@ -189,7 +196,8 @@
         "_id": "45f4e41afa7f30c868279064e",
         "fullname": "Lucas Howard",
         "avatar": null
-      }
+      },
+      "dialog": "5f1de2205d0f91dc7109bf44c881c53f6"
     },
     {
       "_id": "5f4e41af249949ae11178d18",
@@ -200,7 +208,8 @@
         "_id": "45f4e41af27b594b1c42f45f5",
         "fullname": "Lucinda Little",
         "avatar": null
-      }
+      },
+      "dialog": "5f1de2205d0f91dc7109bf44c881c53f6"
     }
   ]
 }

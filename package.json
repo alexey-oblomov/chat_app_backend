@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "json-server --watch db.json --port 9999",
     "test": "echo \"Error: no test specified\" && exit 1",
     "stylelint": "stylelint src/*.{css,scss,sass}",
     "stylelint:fix": "stylelint src/*.{css,scss,sass} --fix",
@@ -39,7 +40,14 @@
     "stylelint-config-recommended": "^3.0.0"
   },
   "dependencies": {
-    "node-sass": "^4.14.1"
+    "@types/node": "^14.6.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.2",
+    "node-sass": "^4.14.1",
+    "socket.io": "^2.3.0",
+    "typescript": "^4.0.2"
   },
   "stylelint": {
     "extends": "stylelint-config-recommended"
@@ -83,7 +91,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{css,scss,sass,less,js,jsx,json}": [ 
+    "src/**/*.{css,scss,sass,less,js,jsx,json}": [
       "prettier --write",
       "git add"
     ],
@@ -94,5 +102,5 @@
     "src/**/*.{css,scss,sass,less}": [
       "stylelint"
     ]
-}
+  }
 }
