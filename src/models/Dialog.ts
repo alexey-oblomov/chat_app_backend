@@ -2,8 +2,8 @@ import mongoose, { Schema, Document } from 'mongoose';
 import { IUser } from './User';
 export interface IDialog extends Document {
   partner: { type: Schema.Types.ObjectId; ref: string; require: true };
-  author:  IUser | string ;
-  lastMessage: { type: Schema.Types.ObjectId; ref: string };
+  author: IUser | string;
+  messages: [{ type: Schema.Types.ObjectId; ref: string }];
 }
 
 const DialogSchema = new Schema(
