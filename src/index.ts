@@ -9,7 +9,6 @@ import { updateLastSeen } from './middlewares';
 const app = express();
 dotenv.config();
 // const port = 3000;
-console.log(process.env.JWT_SECRET);
 
 app.use(bodyParser.json());
 app.use(updateLastSeen);
