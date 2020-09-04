@@ -6,9 +6,9 @@ export interface IUser extends Document {
   fullname: string;
   password: string;
   confirmed: boolean;
-  avatar: string;
+  avatar?: string;
   confirm_hash: string;
-  last_seen: Date;
+  last_seen?: Date;
 }
 
 const UserSchema = new Schema(
