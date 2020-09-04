@@ -3,11 +3,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import { UserController, DialogController, MessageController } from './controllers';
+import { updateLastSeen } from './middlewares';
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+app.use(updateLastSeen);
 
 const User = new UserController();
 const Dialog = new DialogController();

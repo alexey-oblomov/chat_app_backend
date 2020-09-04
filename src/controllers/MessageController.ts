@@ -5,7 +5,6 @@ import { IMessage } from '../models/Message';
 class MessageController {
   index(req: express.Request, res: express.Response) {
     const dialogId: any = req.query.dialog;
-    console.log('dialogId ', dialogId);
 
     MessageModel.find({ dialog: dialogId })
       .populate(['dialog'])
