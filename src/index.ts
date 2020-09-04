@@ -1,12 +1,15 @@
 import mongoose from 'mongoose';
 import express from 'express';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 
 import { UserController, DialogController, MessageController } from './controllers';
 import { updateLastSeen } from './middlewares';
 
 const app = express();
-const port = 3000;
+dotenv.config();
+// const port = 3000;
+console.log(process.env);
 
 app.use(bodyParser.json());
 app.use(updateLastSeen);
@@ -34,6 +37,6 @@ app.get('/messages', Messages.index);
 app.post('/messages', Messages.create);
 app.delete('/messages/:id', Messages.delete);
 
-app.listen(port, function () {
-  console.log(`Запустились:${port}`);
+app.listen(process.env.PORT, function () {
+  console.log(`Запустились:${process.env.PORT}`);
 });
