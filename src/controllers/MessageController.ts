@@ -37,18 +37,18 @@ class MessageController {
       });
   }
 
-  //   delete(req: express.Request, res: express.Response) {
-  //     const id: string = req.params.id;
-  //     MessageModel.findOneAndRemove({ _id: id })
-  //       .then((dialog) => {
-  //         if (dialog) {
-  //           res.json({ message: `Dialog deleted` });
-  //         }
-  //       })
-  //       .catch(() => {
-  //         res.json({ message: `Dialog not found` });
-  //       });
-  //   }
+  delete(req: express.Request, res: express.Response) {
+    const id: string = req.params.id;
+    MessageModel.findOneAndRemove({ _id: id })
+      .then((message) => {
+        if (message) {
+          res.json({ message: `Message deleted` });
+        }
+      })
+      .catch(() => {
+        res.json({ message: `Message not found` });
+      });
+  }
 }
 
 export default MessageController;

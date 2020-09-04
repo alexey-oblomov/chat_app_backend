@@ -15,6 +15,7 @@ const Messages = new MessageController();
 
 mongoose.connect('mongodb://localhost:27017/chat', {
   useNewUrlParser: true,
+  useFindAndModify: false,
   useCreateIndex: true,
   useUnifiedTopology: true,
 });
@@ -29,6 +30,7 @@ app.delete('/dialogs/:id', Dialog.delete);
 
 app.get('/messages', Messages.index);
 app.post('/messages', Messages.create);
+app.delete('/messages/:id', Messages.delete);
 
 app.listen(port, function () {
   console.log(`Запустились:${port}`);
