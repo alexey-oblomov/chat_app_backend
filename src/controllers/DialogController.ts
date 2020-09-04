@@ -32,6 +32,19 @@ class DialogController {
         res.json(reason);
       });
   }
+
+  delete(req: express.Request, res: express.Response) {
+    const id: string = req.params.id;
+    DialogModel.findOneAndRemove({ _id: id })
+      .then((dialog) => {
+        if (dialog) {
+          res.json({ message: `Dialog deleted` });
+        }
+      })
+      .catch(() => {
+        res.json({ message: `Dialog not found` });
+      });
+  }
 }
 
 export default DialogController;
