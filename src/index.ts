@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 import express from 'express';
 import bodyParser from 'body-parser';
 
-import { UserModel } from './models';
 import { UserController, DialogController, MessageController } from './controllers';
 
 const app = express();
@@ -24,7 +23,7 @@ app.get('/user/:id', User.index);
 app.post('/user/registration', User.create);
 app.delete('/user/:id', User.delete);
 
-app.get('/dialogs/:id', Dialog.index);
+app.get('/dialogs', Dialog.index);
 app.post('/dialogs', Dialog.create);
 app.delete('/dialogs/:id', Dialog.delete);
 

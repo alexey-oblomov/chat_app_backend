@@ -23,7 +23,7 @@ class UserController {
     const postData = {
       email: req.body.email,
       fullname: req.body.fullname,
-      password: req.body.fullname,
+      password: req.body.password,
     };
     const user = new UserModel(postData);
     user

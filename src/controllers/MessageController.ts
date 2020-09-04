@@ -1,11 +1,13 @@
 import express from 'express';
 import { MessageModel } from '../models';
+import { IMessage } from '../models/Message';
 
 class MessageController {
   index(req: express.Request, res: express.Response) {
     const dialogId: any = req.query.dialog;
+    console.log('dialogId ', dialogId);
 
-    MessageModel.find({ dialogr: dialogId })
+    MessageModel.find({ dialog: dialogId })
       .populate(['dialog'])
       .exec(function (err, messages) {
         if (err) {
@@ -18,16 +20,18 @@ class MessageController {
   }
 
   create(req: express.Request, res: express.Response) {
+    const userId = '5f52100d59c67b4f6c9c8d13';
     const postData = {
       text: req.body.text,
-      dialogId: req.body.dialogId,
+      user: userId,
+      dialog: req.body.dialog_id,
     };
 
     const message = new MessageModel(postData);
 
     message
       .save()
-      .then((obj: any) => res.json(obj))
+      .then((obj: IMessage) => res.json(obj))
       .catch((reason: any) => {
         res.json(reason);
       });
