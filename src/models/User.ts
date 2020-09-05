@@ -11,6 +11,7 @@ export interface IUser extends Document {
   confirm_hash: string;
   last_seen: Date;
   data?: IUser;
+  _id: any;
 }
 
 const UserSchema: Schema = new Schema(

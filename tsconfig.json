@@ -17,5 +17,5 @@
   "files": ["./src/types.d.ts", "./node_modules/@types/node/index.d.ts"],
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"],
-  "typeRoots": ["./node_modules/@types"]
+  "typeRoots": ["@types", "./node_modules/@types"]
 }

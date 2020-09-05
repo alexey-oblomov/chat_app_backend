@@ -13,6 +13,7 @@ export default (req: any, res: any, next: any): void => {
         if (user) {
           req.user = user.data._doc;
         }
+
         next();
       })
       .catch(() => {

@@ -26,6 +26,7 @@ mongoose.connect('mongodb://localhost:27017/chat', {
   useUnifiedTopology: true,
 });
 
+app.get('/user/me', User.getMe);
 app.get('/user/:id', User.index);
 app.post('/user/registration', User.create);
 app.delete('/user/:id', User.delete);

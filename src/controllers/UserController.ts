@@ -1,7 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import { validationResult, Result, ValidationError } from 'express-validator';
-
 import { UserModel } from '../models';
 import { IUser } from '../models/User';
 import { createJWTToken } from '../utils';
@@ -20,9 +19,19 @@ class UserController {
     });
   }
 
-  getMe() {
-    // TODO
-  }
+  getMe = (req: express.Request, res: express.Response) => {
+    // const id: string = req.user._id;
+    let userId = '5f52100d59c67b4f6c9c8d13';
+    UserModel.findById(userId, (err, _user) => {
+      if (err) {
+        return res.status(404).json({
+          message: 'Not Found',
+        });
+      }
+    }).then((user: any) => {
+      res.json(user);
+    });
+  };
 
   create = (req: express.Request, res: express.Response): void => {
     const postData: { email: string; fullname: string; password: string } = {

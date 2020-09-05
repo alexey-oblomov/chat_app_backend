@@ -10,8 +10,10 @@ class DialogController {
   //   this.io = io;
   // }
 
-  index = (req: express.Request, res: express.Response): void => {
-    const userId = req.user._id;
+  index = (_req: express.Request, res: express.Response): void => {
+    // const userId = _req.user.id;
+
+    let userId = '5f52100d59c67b4f6c9c8d13';
 
     DialogModel.find()
       .or([{ author: userId }, { partner: userId }])
@@ -34,13 +36,13 @@ class DialogController {
 
   create = (req: express.Request, res: express.Response): void => {
     const postData = {
-      author: req.user._id,
+      // author: req.user._id,
       partner: req.body.partner,
     };
 
     DialogModel.findOne(
       {
-        author: req.user._id,
+        // author: req.user._id,
         partner: req.body.partner,
       },
       (err, dialog) => {
@@ -63,8 +65,8 @@ class DialogController {
             .then((dialogObj) => {
               const message = new MessageModel({
                 text: req.body.text,
-                user: req.user._id,
-                dialog: dialogObj._id,
+                // user: req.user._id,
+                // dialog: dialogObj._id,
               });
 
               message
@@ -90,7 +92,7 @@ class DialogController {
               });
             });
         }
-      },
+      }
     );
   };
 
