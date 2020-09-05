@@ -5,7 +5,7 @@ import isEmail from 'validator/lib/isEmail';
 export interface IUser extends Document {
   email?: string;
   fullname?: string;
-  password?: string;
+  password: string;
   confirmed?: boolean;
   avatar?: string;
   confirm_hash?: string;

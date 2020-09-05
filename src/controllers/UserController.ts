@@ -71,6 +71,7 @@ class UserController {
             message: 'User not found',
           });
         }
+        console.log('user', user.password);
 
         if (bcrypt.compareSync(postData.password, user.password)) {
           const token = createJWTToken(user);
