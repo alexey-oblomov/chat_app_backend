@@ -30,21 +30,15 @@ const UserSchema = new Schema(
   { timestamps: true }
 );
 
-UserSchema.pre('save', function (next: any) {
-  let user: IUser = this;
+UserSchema.pre<IUser>('save', async function (next) {
+  const user = this;
 
   if (!user.isModified('password')) {
-    return next;
+    return next();
   }
 
-  generatePasswordHash(user.password)
-    .then((hash) => {
-      user.password = String(hash);
-      next();
-    })
-    .catch((err) => {
-      next(err);
-    });
+  user.password = await generatePasswordHash((user.password = ''));
+  user.confirm_hash = await generatePasswordHash(new Date().toString());
 });
 
 const UserModel = mongoose.model<IUser>('User', UserSchema);

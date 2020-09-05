@@ -3,7 +3,12 @@ import { verifyJWTToken } from '../utils';
 // import { DecodedData } from '../utils/verifyJWTToken';
 
 export default (req: any, res: any, next: any): void => {
-  if (req.path === '/user/login' || req.path === '/user/signup' || req.path === '/user/verify') {
+  if (
+    req.path === '/user/login' ||
+    req.path === '/user/signup' ||
+    req.path === '/user/verify' ||
+    req.path === '/user/registration'
+  ) {
     return next();
   }
 
