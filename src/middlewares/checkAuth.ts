@@ -1,14 +1,7 @@
-import express from 'express';
 import { verifyJWTToken } from '../utils';
-// import { DecodedData } from '../utils/verifyJWTToken';
 
 export default (req: any, res: any, next: any): void => {
-  if (
-    req.path === '/user/login' ||
-    req.path === '/user/signup' ||
-    req.path === '/user/verify' ||
-    req.path === '/user/registration'
-  ) {
+  if (req.path === '/user/login' || req.path === '/user/signup' || req.path === '/user/verify') {
     return next();
   }
 
@@ -16,9 +9,9 @@ export default (req: any, res: any, next: any): void => {
 
   if (token) {
     verifyJWTToken(token)
-      .then((user) => {
+      .then((user: any) => {
         if (user) {
-          req.user = user;
+          req.user = user.data._doc;
         }
         next();
       })

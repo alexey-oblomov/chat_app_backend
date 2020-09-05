@@ -3,16 +3,17 @@ import { generatePasswordHash } from '../utils/Validations';
 import isEmail from 'validator/lib/isEmail';
 
 export interface IUser extends Document {
-  email?: string;
-  fullname?: string;
+  email: string;
+  fullname: string;
   password: string;
-  confirmed?: boolean;
-  avatar?: string;
-  confirm_hash?: string;
-  last_seen?: Date;
+  confirmed: boolean;
+  avatar: string;
+  confirm_hash: string;
+  last_seen: Date;
+  data?: IUser;
 }
 
-const UserSchema = new Schema(
+const UserSchema: Schema = new Schema(
   {
     email: {
       type: String,
@@ -20,15 +21,37 @@ const UserSchema = new Schema(
       validate: [isEmail, 'Invalid email'],
       unique: true,
     },
-    fullname: { type: String, required: 'Fullname is required' },
-    password: { type: String, required: 'Password is required' },
-    confirmed: { type: Boolean, default: false },
+    fullname: {
+      type: String,
+      required: 'Fullname is required',
+    },
+    password: {
+      type: String,
+      required: 'Password is required',
+    },
+    confirmed: {
+      type: Boolean,
+      default: false,
+    },
     avatar: String,
     confirm_hash: String,
-    last_seen: { type: Date, default: new Date() },
+    last_seen: {
+      type: Date,
+      default: new Date(),
+    },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
+
+// UserSchema.virtual('isOnline').get(function (this: any) {
+//   return differenceInMinutes(new Date().toISOString(), this.last_seen) < 5;
+// });
+
+UserSchema.set('toJSON', {
+  virtuals: true,
+});
 
 UserSchema.pre<IUser>('save', async function (next) {
   const user = this;
@@ -37,7 +60,7 @@ UserSchema.pre<IUser>('save', async function (next) {
     return next();
   }
 
-  user.password = await generatePasswordHash((user.password = ''));
+  user.password = await generatePasswordHash(user.password);
   user.confirm_hash = await generatePasswordHash(new Date().toString());
 });
 

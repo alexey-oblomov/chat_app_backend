@@ -9,7 +9,7 @@ import { createJWTToken } from '../utils';
 class UserController {
   index(req: express.Request, res: express.Response) {
     const id: string = req.params.id;
-    UserModel.findById(id, (err, user) => {
+    UserModel.findById(id, (err, _user) => {
       if (err) {
         return res.status(404).json({
           message: 'Not Found',
@@ -24,20 +24,33 @@ class UserController {
     // TODO
   }
 
-  create(req: express.Request, res: express.Response) {
-    const postData = {
+  create = (req: express.Request, res: express.Response): void => {
+    const postData: { email: string; fullname: string; password: string } = {
       email: req.body.email,
       fullname: req.body.fullname,
       password: req.body.password,
     };
-    const user = new UserModel(postData);
-    user
-      .save()
-      .then((obj: any) => res.json(obj))
-      .catch((reason: any) => {
-        res.json(reason);
-      });
-  }
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.status(422).json({ errors: errors.array() });
+    } else {
+      const user = new UserModel(postData);
+
+      user
+        .save()
+        .then((obj: IUser) => {
+          res.json(obj);
+        })
+        .catch((reason) => {
+          res.status(500).json({
+            status: 'error',
+            message: reason,
+          });
+        });
+    }
+  };
 
   delete(req: express.Request, res: express.Response) {
     const id: string = req.params.id;
@@ -49,7 +62,7 @@ class UserController {
           });
         }
       })
-      .catch((err) => {
+      .catch((_err) => {
         res.json({ message: 'User not found' });
       });
   }
@@ -71,7 +84,6 @@ class UserController {
             message: 'User not found',
           });
         }
-        console.log('user', user.password);
 
         if (bcrypt.compareSync(postData.password, user.password)) {
           const token = createJWTToken(user);
