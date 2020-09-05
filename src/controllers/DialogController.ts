@@ -3,6 +3,10 @@ import express from 'express';
 
 import { DialogModel, MessageModel } from '../models';
 
+interface IExpress extends express.Request {
+  user?: any;
+}
+
 class DialogController {
   // io: socket.Server;
 
@@ -10,10 +14,8 @@ class DialogController {
   //   this.io = io;
   // }
 
-  index = (_req: express.Request, res: express.Response): void => {
-    // const userId = _req.user.id;
-
-    let userId = '5f52100d59c67b4f6c9c8d13';
+  index = (_req: IExpress, res: express.Response): void => {
+    const userId = _req.user._id;
 
     DialogModel.find()
       .or([{ author: userId }, { partner: userId }])
@@ -34,15 +36,15 @@ class DialogController {
       });
   };
 
-  create = (req: express.Request, res: express.Response): void => {
+  create = (req: IExpress, res: express.Response): void => {
     const postData = {
-      // author: req.user._id,
+      author: req.user?._id,
       partner: req.body.partner,
     };
 
     DialogModel.findOne(
       {
-        // author: req.user._id,
+        author: req.user._id,
         partner: req.body.partner,
       },
       (err, dialog) => {
@@ -65,8 +67,8 @@ class DialogController {
             .then((dialogObj) => {
               const message = new MessageModel({
                 text: req.body.text,
-                // user: req.user._id,
-                // dialog: dialogObj._id,
+                user: req.user._id,
+                dialog: dialogObj._id,
               });
 
               message
@@ -96,7 +98,7 @@ class DialogController {
     );
   };
 
-  delete = (req: express.Request, res: express.Response): void => {
+  delete = (req: IExpress, res: express.Response): void => {
     const id: string = req.params.id;
     DialogModel.findOneAndRemove({ _id: id })
       .then((dialog) => {

@@ -19,7 +19,7 @@ class UserController {
     });
   }
 
-  getMe = (req: express.Request, res: express.Response) => {
+  getMe = (_req: express.Request, res: express.Response) => {
     // const id: string = req.user._id;
     let userId = '5f52100d59c67b4f6c9c8d13';
     UserModel.findById(userId, (err, _user) => {
