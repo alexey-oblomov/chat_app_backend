@@ -2,6 +2,8 @@ import express from 'express';
 import { UserModel } from '../models';
 import { IUser } from '../models/User';
 import { createJWTToken } from '../utils';
+import { generatePasswordHash } from '../utils/Validations';
+
 class UserController {
   index(req: express.Request, res: express.Response) {
     const id: string = req.params.id;
@@ -62,18 +64,27 @@ class UserController {
           message: 'Not Found',
         });
       }
-      if (user.password === postData.password) {
-        const token = createJWTToken(user);
-        res.json({
-          status: 'success',
-          token,
-        });
-      } else {
-        res.json({
-          status: "error",
-          message: "Incorrect password or email"
+
+      generatePasswordHash(user.password)
+        .then((passwordHash) => {
+          if (user.password === passwordHash) {
+            const token = createJWTToken(user);
+            res.json({
+              status: 'success',
+              token,
+            });
+          } else {
+            res.json({
+              status: 'error',
+              message: 'Incorrect password or email',
+            });
+          }
         })
-      }
+        .catch((err) => {
+          return res.status(404).json({
+            message: err,
+          });
+        });
     });
   }
 }

@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { verifyUserPassword } from '../utils/Validations';
+import { generatePasswordHash } from '../utils/Validations';
 import isEmail from 'validator/lib/isEmail';
 
 export interface IUser extends Document {
@@ -37,7 +37,7 @@ UserSchema.pre('save', function (next: any) {
     return next;
   }
 
-  verifyUserPassword(user.password)
+  generatePasswordHash(user.password)
     .then((hash) => {
       user.password = String(hash);
       next();
