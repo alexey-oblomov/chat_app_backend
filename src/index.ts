@@ -4,13 +4,14 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 
 import { UserController, DialogController, MessageController } from './controllers';
-import { updateLastSeen } from './middlewares';
+import { updateLastSeen, checkAuth } from './middlewares';
 
 const app = express();
 dotenv.config();
 // const port = 3000;
 
 app.use(bodyParser.json());
+app.use(checkAuth);
 app.use(updateLastSeen);
 
 const User = new UserController();

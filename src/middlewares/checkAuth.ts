@@ -3,7 +3,7 @@ import { verifyJWTToken } from '../utils';
 // import { DecodedData } from '../utils/verifyJWTToken';
 
 export default (req: any, res: any, next: any): void => {
-  if (req.path === '/user/signin' || req.path === '/user/signup' || req.path === '/user/verify') {
+  if (req.path === '/user/login' || req.path === '/user/signup' || req.path === '/user/verify') {
     return next();
   }
 
@@ -20,5 +20,7 @@ export default (req: any, res: any, next: any): void => {
       .catch(() => {
         res.status(403).json({ message: 'Invalid auth token provided.' });
       });
+  } else {
+    res.status(403).json({ message: 'Вы не авторизованы' });
   }
 };
