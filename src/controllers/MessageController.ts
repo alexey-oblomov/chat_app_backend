@@ -1,8 +1,16 @@
 import express from 'express';
+import socket from 'socket.io';
+
 import { MessageModel } from '../models';
 import { IMessage } from '../models/Message';
 
 class MessageController {
+  io: socket.Server;
+
+  constructor(io: socket.Server) {
+    this.io = io;
+  }
+
   index(req: express.Request, res: express.Response) {
     const dialogId: any = req.query.dialog;
 

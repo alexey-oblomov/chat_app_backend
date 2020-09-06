@@ -1,10 +1,16 @@
 import bodyParser from 'body-parser';
-import _io from 'socket.io';
-import { UserController, DialogController, MessageController } from '../controllers';
+import express from 'express';
+import socket from 'socket.io';
+
+import { UserCtrl, DialogCtrl, MessageCtrl } from '../controllers';
 import { updateLastSeen, checkAuth } from '../middlewares';
 import { loginValidation } from '../utils/Validations';
 
-const createRoutes = (app: any, _io: any) => {
+const createRoutes = (app: express.Express, io: socket.Server) => {
+  const UserController = new UserCtrl(io);
+  const DialogController = new DialogCtrl(io);
+  const MessageController = new MessageCtrl(io);
+
   app.use(bodyParser.json());
   app.use(checkAuth);
   app.use(updateLastSeen);

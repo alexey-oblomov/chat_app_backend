@@ -1,12 +1,19 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import { validationResult, Result, ValidationError } from 'express-validator';
+import socket from 'socket.io';
 
 import { UserModel } from '../models';
 import { IUser } from '../models/User';
 import { createJWTToken } from '../utils';
 import { IExpress } from '../types';
 class UserController {
+  io: socket.Server;
+
+  constructor(io: socket.Server) {
+    this.io = io;
+  }
+
   index(req: express.Request, res: express.Response) {
     const id: string = req.params.id;
     UserModel.findById(id, (err, _user) => {

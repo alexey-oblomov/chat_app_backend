@@ -6,11 +6,11 @@ import { createServer } from 'http';
 import './core/db';
 import ceateRoutes from './core/routes';
 
-dotenv.config();
-
 const app = express();
 const http = createServer(app);
 const io = socket(http);
+
+dotenv.config();
 
 ceateRoutes(app, io);
 

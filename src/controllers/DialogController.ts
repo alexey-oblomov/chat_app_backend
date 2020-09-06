@@ -1,15 +1,15 @@
 import express from 'express';
-// import socket from 'socket.io';
+import socket from 'socket.io';
 
 import { DialogModel, MessageModel } from '../models';
 import { IExpress } from '../types';
 
 class DialogController {
-  // io: socket.Server;
+  io: socket.Server;
 
-  // constructor(io: socket.Server) {
-  //   this.io = io;
-  // }
+  constructor(io: socket.Server) {
+    this.io = io;
+  }
 
   index = (_req: IExpress, res: express.Response): void => {
     const userId = _req.user._id;
