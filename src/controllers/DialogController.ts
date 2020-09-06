@@ -2,10 +2,7 @@ import express from 'express';
 // import socket from 'socket.io';
 
 import { DialogModel, MessageModel } from '../models';
-
-interface IExpress extends express.Request {
-  user?: any;
-}
+import { IExpress } from '../types';
 
 class DialogController {
   // io: socket.Server;

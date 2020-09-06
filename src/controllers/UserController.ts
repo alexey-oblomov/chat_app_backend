@@ -1,10 +1,11 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import { validationResult, Result, ValidationError } from 'express-validator';
+
 import { UserModel } from '../models';
 import { IUser } from '../models/User';
 import { createJWTToken } from '../utils';
-
+import { IExpress } from '../types';
 class UserController {
   index(req: express.Request, res: express.Response) {
     const id: string = req.params.id;
@@ -19,9 +20,9 @@ class UserController {
     });
   }
 
-  getMe = (_req: express.Request, res: express.Response) => {
-    // const id: string = req.user._id;
-    let userId = '5f52100d59c67b4f6c9c8d13';
+  getMe = (req: IExpress, res: express.Response) => {
+    const userId: string = req.user?._id;
+    // let userId = '5f52100d59c67b4f6c9c8d13';
     UserModel.findById(userId, (err, _user) => {
       if (err) {
         return res.status(404).json({

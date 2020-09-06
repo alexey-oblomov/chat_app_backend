@@ -5,3 +5,9 @@ declare namespace Express {
     // user?: IUser;
   }
 }
+
+export interface IExpress extends express.Request {
+  user?: any;
+  body?: any;
+  params?: any;
+}
