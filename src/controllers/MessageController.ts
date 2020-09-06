@@ -26,7 +26,7 @@ class MessageController {
       });
   }
 
-  create(req: express.Request, res: express.Response) {
+  create = (req: express.Request, res: express.Response) => {
     const userId = '5f52100d59c67b4f6c9c8d13';
     const postData = {
       text: req.body.text,
@@ -38,11 +38,14 @@ class MessageController {
 
     message
       .save()
-      .then((obj: IMessage) => res.json(obj))
+      .then((obj: IMessage) => {
+        res.json(obj);
+        this.io.emit('NEW:MESSAGE', obj);
+      })
       .catch((reason: any) => {
         res.json(reason);
       });
-  }
+  };
 
   delete(req: express.Request, res: express.Response) {
     const id: string = req.params.id;

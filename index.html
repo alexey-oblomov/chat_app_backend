@@ -10,8 +10,11 @@
     <script>
       window.onload = () => {
         const socket = io('http://localhost:3000');
+
         window.socket = socket;
-        console.log('Клиент месседж');
+        socket.on("NEW:MESSAGE", function(msg) {
+          console.log('Клиент месседж', msg);
+        })
       };
     </script>
   </body>
