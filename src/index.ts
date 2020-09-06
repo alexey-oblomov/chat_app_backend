@@ -12,7 +12,7 @@ const app = express();
 const http = createServer(app);
 const io = socket(http);
 
-ceateRoutes(app);
+ceateRoutes(app, io);
 
 io.on('connection', function (socket) {
   console.log('a user connected');

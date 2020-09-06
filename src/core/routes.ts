@@ -1,10 +1,10 @@
 import bodyParser from 'body-parser';
-
+import _io from 'socket.io';
 import { UserController, DialogController, MessageController } from '../controllers';
 import { updateLastSeen, checkAuth } from '../middlewares';
 import { loginValidation } from '../utils/Validations';
 
-export default (app: any) => {
+const createRoutes = (app: any, _io: any) => {
   app.use(bodyParser.json());
   app.use(checkAuth);
   app.use(updateLastSeen);
@@ -23,3 +23,5 @@ export default (app: any) => {
   app.post('/messages', MessageController.create);
   app.delete('/messages/:id', MessageController.delete);
 };
+
+export default createRoutes;
