@@ -29,7 +29,6 @@ class UserController {
 
   getMe = (req: IExpress, res: express.Response) => {
     const userId: string = req.user?._id;
-    // let userId = '5f52100d59c67b4f6c9c8d13';
     UserModel.findById(userId, (err, _user) => {
       if (err) {
         return res.status(404).json({
