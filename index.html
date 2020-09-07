@@ -12,9 +12,6 @@
         const socket = io('http://localhost:3000');
 
         window.socket = socket;
-        socket.on("NEW:MESSAGE", function(msg) {
-          console.log('Клиент месседж', msg);
-        })
       };
     </script>
   </body>

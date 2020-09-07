@@ -11,7 +11,7 @@ class MessageController {
     this.io = io;
   }
 
-  index(req: express.Request, res: express.Response) {
+  index = (req: express.Request, res: express.Response) => {
     const dialogId: any = req.query.dialog;
 
     MessageModel.find({ dialog: dialogId })
@@ -24,10 +24,11 @@ class MessageController {
         }
         return res.json(messages);
       });
-  }
+  };
 
-  create = (req: express.Request, res: express.Response) => {
-    const userId = '5f52100d59c67b4f6c9c8d13';
+  create = (req: any, res: express.Response) => {
+    const userId = req.user._id;
+
     const postData = {
       text: req.body.text,
       user: userId,
@@ -35,6 +36,7 @@ class MessageController {
     };
 
     const message = new MessageModel(postData);
+    console.log('message: ', message);
 
     message
       .save()
@@ -47,7 +49,7 @@ class MessageController {
       });
   };
 
-  delete(req: express.Request, res: express.Response) {
+  delete = (req: express.Request, res: express.Response) => {
     const id: string = req.params.id;
     MessageModel.findOneAndRemove({ _id: id })
       .then((message) => {
@@ -58,7 +60,7 @@ class MessageController {
       .catch(() => {
         res.json({ message: `Message not found` });
       });
-  }
+  };
 }
 
 export default MessageController;

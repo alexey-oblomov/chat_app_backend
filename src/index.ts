@@ -1,27 +1,20 @@
 import express from 'express';
-import socket from 'socket.io';
 import dotenv from 'dotenv';
 import { createServer } from 'http';
+import cors from 'cors';
 
 import './core/db';
-import ceateRoutes from './core/routes';
+import createRoutes from './core/routes';
+import createSocket from './core/socket';
 
 const app = express();
 const http = createServer(app);
-const io = socket(http);
+const io = createSocket(http);
 
+app.use(cors());
 dotenv.config();
 
-ceateRoutes(app, io);
-
-io.on('connection', function (socket) {
-  console.log('a user connected');
-  socket.emit('test command', 'TEST COMMAND');
-
-  socket.on('chat message', function (msg) {
-    console.log('message ', msg);
-  });
-});
+createRoutes(app, io);
 
 http.listen(process.env.PORT, function () {
   console.log(`Запустились:${process.env.PORT}`);
