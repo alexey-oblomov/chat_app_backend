@@ -41,8 +41,13 @@ class MessageController {
     message
       .save()
       .then((obj: IMessage) => {
-        res.json(obj);
-        this.io.emit('NEW:MESSAGE', obj);
+        obj.populate('dialog', (err, _message) => {
+          if (err) {
+            return res.status(404).json({ message: 'Message not found' });
+          }
+        });
+        res.json(message);
+        this.io.emit('SERVER:NEW_MESSAGE', message);
       })
       .catch((reason: any) => {
         res.json(reason);
