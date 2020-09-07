@@ -1,12 +1,14 @@
-import express from 'express';
-import bcrypt from 'bcrypt';
-import { validationResult, Result, ValidationError } from 'express-validator';
-import socket from 'socket.io';
+import express from "express";
+import bcrypt from "bcrypt";
+import socket from "socket.io";
+import { validationResult, Result, ValidationError } from "express-validator";
+// import mailer from "../core/mailer";
 
-import { UserModel } from '../models';
-import { IUser } from '../models/User';
-import { createJWTToken } from '../utils';
-import { IExpress } from '../types';
+import { UserModel } from "../models";
+import { IUser } from "../models/User";
+import { createJWToken } from "../utils";
+// import { SentMessageInfo } from "nodemailer/lib/sendmail-transport";
+
 class UserController {
   io: socket.Server;
 
@@ -14,30 +16,65 @@ class UserController {
     this.io = io;
   }
 
-  index(req: express.Request, res: express.Response) {
+  show = (req: express.Request, res: express.Response): void => {
     const id: string = req.params.id;
-    UserModel.findById(id, (err, _user) => {
+    UserModel.findById(id, (err: any, user: IUser) => {
       if (err) {
         return res.status(404).json({
-          message: 'Not Found',
+          message: "User not found",
         });
       }
-    }).then((user: any) => {
       res.json(user);
     });
-  }
+  };
 
-  getMe = (req: IExpress, res: express.Response) => {
-    const userId: string = req.user?._id;
-    UserModel.findById(userId, (err, _user) => {
-      if (err) {
+  getMe = (req: any, res: express.Response): void => {
+    const id: string = req.user && req.user._id;
+    UserModel.findById(id, (err: any, user: IUser) => {
+      if (err || !user) {
         return res.status(404).json({
-          message: 'Not Found',
+          message: "User not found",
         });
       }
-    }).then((user: any) => {
       res.json(user);
     });
+  };
+
+  findUsers = (req: express.Request, res: express.Response): void => {
+    const query: any = req.query.query;
+    UserModel.find()
+      .or([
+        { fullname: new RegExp(query, "i") },
+        { email: new RegExp(query, "i") },
+      ])
+      .then((users: IUser[]) => res.json(users))
+      .catch((err: any) => {
+        return res.status(404).json({
+          status: "error",
+          message: err,
+        });
+      });
+  };
+
+  delete = (req: express.Request, res: express.Response): void => {
+    const id: string = req.params.id;
+    UserModel.findOneAndRemove({ _id: id })
+      .then((user: IUser | null) => {
+        if (user) {
+          res.json({
+            message: `User ${user.fullname} deleted`,
+          });
+        } else {
+          res.status(404).json({
+            status: "error",
+          });
+        }
+      })
+      .catch((err: any) => {
+        res.json({
+          message: err,
+        });
+      });
   };
 
   create = (req: express.Request, res: express.Response): void => {
@@ -58,30 +95,62 @@ class UserController {
         .save()
         .then((obj: IUser) => {
           res.json(obj);
+          // mailer.sendMail(
+          //   {
+          //     from: "admin@test.com",
+          //     to: postData.email,
+          //     subject: "Подтверждение почты React Chat Tutorial",
+          //     html: `Для того, чтобы подтвердить почту, перейдите <a href="http://localhost:3000/signup/verify?hash=${obj.confirm_hash}">по этой ссылке</a>`,
+          //   },
+          //   function (err: Error | null, info: SentMessageInfo) {
+          //     if (err) {
+          //       console.log(err);
+          //     } else {
+          //       console.log(info);
+          //     }
+          //   }
+          // );
         })
         .catch((reason) => {
           res.status(500).json({
-            status: 'error',
+            status: "error",
             message: reason,
           });
         });
     }
   };
 
-  delete(req: express.Request, res: express.Response) {
-    const id: string = req.params.id;
-    UserModel.findByIdAndRemove({ _id: id })
-      .then((user) => {
-        if (user) {
-          res.json({
-            message: `User ${user.fullname} deleted`,
+  verify = (req: express.Request, res: express.Response): void => {
+    const hash: any = req.query.hash;
+
+    if (!hash) {
+      res.status(422).json({ errors: "Invalid hash" });
+    } else {
+      UserModel.findOne({ confirm_hash: hash }, (err: any, user: IUser) => {
+        if (err || !user) {
+          return res.status(404).json({
+            status: "error",
+            message: "Hash not found",
           });
         }
-      })
-      .catch((_err) => {
-        res.json({ message: 'User not found' });
+
+        user.confirmed = true;
+        user.save((err: any) => {
+          if (err) {
+            return res.status(404).json({
+              status: "error",
+              message: err,
+            });
+          }
+
+          res.json({
+            status: "success",
+            message: "Аккаунт успешно подтвержден!",
+          });
+        });
       });
-  }
+    }
+  };
 
   login = (req: express.Request, res: express.Response): void => {
     const postData: { email: string; password: string } = {
@@ -97,20 +166,20 @@ class UserController {
       UserModel.findOne({ email: postData.email }, (err, user: IUser) => {
         if (err || !user) {
           return res.status(404).json({
-            message: 'User not found',
+            message: "User not found",
           });
         }
 
         if (bcrypt.compareSync(postData.password, user.password)) {
-          const token = createJWTToken(user);
+          const token = createJWToken(user);
           res.json({
-            status: 'success',
+            status: "success",
             token,
           });
         } else {
           res.status(403).json({
-            status: 'error',
-            message: 'Incorrect password or email',
+            status: "error",
+            message: "Incorrect password or email",
           });
         }
       });
